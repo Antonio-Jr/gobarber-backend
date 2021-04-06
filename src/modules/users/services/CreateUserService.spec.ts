@@ -5,19 +5,25 @@ import FakeHashProvider from '@modules/users/providers/hashProvider/fakes/FakeHa
 import AppError from '@shared/errors/AppError';
 import User from '../infra/typeorm/entities/User';
 
-const fakeUserRepository = new FakeUserRepository();
-const fakeHashProvider = new FakeHashProvider();
+let fakeUserRepository: FakeUserRepository;
+let fakeHashProvider: FakeHashProvider;
+let createUserService: CreateUserService;
 
 describe('Create user', () => {
-  it('should be able to create a new user', async () => {
-    const createUserService = new CreateUserService(
+  beforeEach(() => {
+    fakeUserRepository = new FakeUserRepository();
+    fakeHashProvider = new FakeHashProvider();
+
+    createUserService = new CreateUserService(
       fakeUserRepository,
       fakeHashProvider,
     );
+  });
 
+  it('should be able to create a new user', async () => {
     const user = await createUserService.execute({
-      name: 'Antonio',
-      email: 'antonio.jr.souza@gmail.com',
+      name: 'John Doe',
+      email: 'johndoe@example.com',
       password: '123456',
     });
 
@@ -26,15 +32,16 @@ describe('Create user', () => {
   });
 
   it('should not be able to create two users with the same email data with another user', async () => {
-    const createUserService = new CreateUserService(
-      fakeUserRepository,
-      fakeHashProvider,
-    );
+    await createUserService.execute({
+      name: 'John Doe',
+      email: 'johndoe@example.com',
+      password: '12345678',
+    });
 
-    expect(
+    await expect(
       createUserService.execute({
-        name: 'Junior',
-        email: 'antonio.jr.souza@gmail.com',
+        name: 'John Doe',
+        email: 'johndoe@example.com',
         password: '12345678',
       }),
     ).rejects.toBeInstanceOf(AppError);
