@@ -3,10 +3,12 @@ import appointmentsRouter from '@modules/appointments/infra/http/routes/appointm
 import usersRouter from '@modules/users/infra/http/routes/users.routes';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import sessionsRouter from '@modules/users/infra/http/routes/sessions.routes';
+import passwordRouter from '@modules/users/infra/http/routes/password.routes';
 
 const routes = Router();
 routes.use('/appointments', ensureAuthenticated, appointmentsRouter);
 routes.use('/users', usersRouter);
 routes.use('/sessions', sessionsRouter);
+routes.use('/password', passwordRouter);
 
 export default routes;
