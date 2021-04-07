@@ -251,7 +251,7 @@ DA:30,4
 DA:31,1
 DA:32,1
 DA:33,3
-DA:34,4
+DA:34,3
 DA:35,4
 DA:36,4
 DA:37,1
@@ -276,13 +276,11 @@ BRDA:27,2,0,4
 BRDA:28,3,0,4
 BRDA:30,4,0,1
 BRDA:33,5,0,3
-BRDA:34,6,0,0
-BRDA:34,7,0,3
-BRDA:36,8,0,1
-BRDA:39,9,0,2
-BRDA:43,10,0,1
-BRF:11
-BRH:10
+BRDA:36,6,0,1
+BRDA:39,7,0,2
+BRDA:43,8,0,1
+BRF:9
+BRH:9
 end_of_record
 TN:
 SF:src/modules/users/services/SendForgotPasswordEmailService.ts
