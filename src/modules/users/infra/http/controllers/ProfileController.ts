@@ -3,12 +3,22 @@ import { container } from 'tsyringe';
 import UpdateProfileService from '@modules/users/services/UpdateProfileService';
 import ShowProfileService from '@modules/users/services/ShowProfileService';
 
+interface IUserResponse {
+  id: string;
+  name: string;
+  email: string;
+  password?: string;
+  avatar: string;
+  created_at: Date;
+  updated_at: Date;
+}
+
 export default class ProfileController {
   public async show(request: Request, response: Response): Promise<Response> {
     const user_id = request.user.id;
     const showProfile = container.resolve(ShowProfileService);
 
-    const profile = await showProfile.execute({
+    const profile: IUserResponse = await showProfile.execute({
       user_id,
     });
     delete profile.password;
@@ -20,7 +30,7 @@ export default class ProfileController {
     const { name, email, oldPassword, password } = request.body;
     const updateProfileService = container.resolve(UpdateProfileService);
 
-    const user = await updateProfileService.execute({
+    const user: IUserResponse = await updateProfileService.execute({
       user_id,
       name,
       email,
