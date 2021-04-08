@@ -24,11 +24,13 @@ describe('ListAppointments', () => {
     await fakeAppointmentsRepository.create({
       date: new Date(2021, 4, 5, 14),
       provider_id: '123456123456',
+      user_id: '123',
     });
 
     await fakeAppointmentsRepository.create({
       date: new Date(2021, 4, 6, 15),
       provider_id: '123456',
+      user_id: '123',
     });
 
     const appointments = await listAppointmentsService.findAll();
