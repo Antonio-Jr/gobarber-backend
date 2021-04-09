@@ -1,7 +1,7 @@
 export default {
   jwt: {
-    wordSecret: 'nodecomtypescript',
-    secret: '1905c851d211e4b72abb9a1f749d5ea2',
+    wordSecret: process.env.APP_WORD_SECRET,
+    secret: process.env.APP_SECRET,
     expiresIn: '1d',
   },
 };
