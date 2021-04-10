@@ -7,7 +7,7 @@ import UsersController from '@modules/users/infra/http/controllers/UsersControll
 
 const usersRouter = Router();
 const usersController = new UsersController();
-const upload = multer(uploadConfig);
+const upload = multer(uploadConfig.multer);
 
 usersRouter.post(
   '/',
