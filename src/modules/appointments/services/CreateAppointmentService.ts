@@ -48,7 +48,7 @@ export default class CreateAppointmentService {
       );
     }
 
-    if (await this.repository.findByDate(appointmentDate)) {
+    if (await this.repository.findByDate(appointmentDate, provider_id)) {
       throw new AppError('This appointment is already booked.');
     }
 
