@@ -5,8 +5,6 @@ import FakeUserTokenRepository from '@modules/users/repositories/fakes/FakeUserT
 import AppError from '@shared/errors/AppError';
 import FakeHashProvider from '../providers/hashProvider/fakes/FakeHashProvider';
 
-// import AppError from '@shared/errors/AppError';
-
 let fakeUserRepository: FakeUserRepository;
 let fakeUserTokenRepository: FakeUserTokenRepository;
 let resetPasswordService: ResetPasswordService;
