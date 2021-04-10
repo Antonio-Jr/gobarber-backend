@@ -6,7 +6,7 @@ import cors from 'cors';
 import { errors } from 'celebrate';
 import 'express-async-errors';
 
-import uploadConfig from '@config/uploadConfig';
+import uploadConfig from '@config/UploadConfig';
 import AppError from '@shared/errors/AppError';
 import routes from './routes';
 

@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 import multer from 'multer';
-import uploadConfig from '@config/uploadConfig';
+import uploadConfig from '@config/UploadConfig';
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAuthenticated';
 import UsersController from '@modules/users/infra/http/controllers/UsersController';
 
